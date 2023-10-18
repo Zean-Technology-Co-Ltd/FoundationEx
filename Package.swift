@@ -23,7 +23,7 @@ let package = Package(
         .target(
             name: "FoundationEx",
             dependencies: [
-//              "RxSwift"
+              "RxSwift"
             ]),
         .testTarget(
             name: "FoundationExTests",
