@@ -84,7 +84,7 @@ extension Array where Element: Hashable {
 
 extension Array where Element: Equatable {
     
-    mutating func removeVC(_ targetVC: Element) {
+    public mutating func removeVC(_ targetVC: Element) {
         self.remove { vc in
             vc == targetVC
         }
