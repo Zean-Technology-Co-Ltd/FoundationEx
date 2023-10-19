@@ -124,11 +124,33 @@ extension NSObject{
                 let tab = topViewController as! UITabBarController
                 topViewController = tab.selectedViewController!
             } else {
-                break;
+                break
             }
         }
         
-        return topViewController;
+        return topViewController
+    }
+    
+    public static var topmostViewController: UIViewController?{
+        let topViewController = UIApplication.shared.nn_keyWindow?.rootViewController
+
+        guard var topViewController = topViewController else { return nil }
+
+        while (true) {
+            if topViewController.presentedViewController != nil {
+                topViewController = topViewController.presentedViewController!
+            } else if topViewController is UINavigationController {
+                let navi = topViewController as! UINavigationController
+                topViewController = navi.topViewController!
+            } else if topViewController is UITabBarController {
+                let tab = topViewController as! UITabBarController
+                topViewController = tab.selectedViewController!
+            } else {
+                break
+            }
+        }
+        
+        return topViewController
     }
 }
 
