@@ -108,8 +108,8 @@ public extension NSObject {
     }
 }
 
-public extension NSObject{
-    var topmostViewController: UIViewController?{
+extension NSObject{
+    public var topmostViewController: UIViewController?{
         let topViewController = UIApplication.shared.nn_keyWindow?.rootViewController
 
         guard var topViewController = topViewController else { return nil }
