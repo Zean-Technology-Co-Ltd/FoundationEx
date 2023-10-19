@@ -5,7 +5,6 @@
 //  Created by zq on 2023/3/3.
 //
 import UIKit
-import RxSwift
 
 public protocol AssociatedObjectStore {}
 
@@ -108,25 +107,6 @@ public extension NSObject {
         }
     }
 }
-
-// MARK: - Event Channel
-
-private var eventChannelKey: UInt8 = 0
-
-extension NSObject: AssociatedObjectStore {
-    
-    fileprivate var eventChannel: PublishSubject<Any> {
-        get { return associatedObject(forKey: &eventChannelKey, default: PublishSubject<Any>()) }
-        set { setAssociatedObject(newValue, forKey: &eventChannelKey) }
-    }
-}
-
-public extension Reactive where Base: NSObject {
-    var eventChannel: PublishSubject<Any> {
-        return base.eventChannel
-    }
-}
-
 
 public extension NSObject{
     var topmostViewController: UIViewController?{
